@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Tuner - Документация проекта</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #718096;
+            margin-bottom: 20px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .nav-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .nav-card h3 {
+            color: #2d3748;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-card p {
+            color: #718096;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .nav-card a {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .nav-card a:hover {
+            background: #5a67d8;
+        }
+
+        .nav-card.prototype {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .nav-card.prototype h3,
+        .nav-card.prototype p {
+            color: white;
+        }
+
+        .nav-card.prototype a {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-card.prototype a:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .features {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .features h2 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            background: #48bb78;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #718096;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Simple Tuner</h1>
+            <p class="subtitle">Веб-приложение для настройки гитары с высокой точностью</p>
+            <span class="version-badge">Версия 2.1</span>
+        </div>
+
+        <div class="nav-grid">
+            <div class="nav-card prototype">
+                <h3>🎨 Интерактивный Прототип</h3>
+                <p>Полностью рабочий UI прототип с современным дизайном, включающий все функции v2.1</p>
+                <a href="prototype.html">Открыть прототип</a>
+            </div>
+
+            <div class="nav-card">
+                <h3>📋 Техническое Задание</h3>
+                <p>Подробные требования к разработке, включая новые функции Concert A Reference и точность ±0.5¢</p>
+                <a href="requirements.md">Читать ТЗ</a>
+            </div>
+
+            <div class="nav-card">
+                <h3>🎯 UI Макеты</h3>
+                <p>Wireframes и схемы интерфейса для десктопной и мобильной версий</p>
+                <a href="ui-mockups.md">Смотреть макеты</a>
+            </div>
+
+            <div class="nav-card">
+                <h3>🔄 Пользовательские Потоки</h3>
+                <p>Диаграммы взаимодействия пользователя с приложением и логика переходов</p>
+                <a href="user-flows.md">Изучить потоки</a>
+            </div>
+        </div>
+
+        <div class="features">
+            <h2>Ключевые возможности v2.1</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🎵</div>
+                    <div>
+                        <strong>Concert A Reference</strong><br>
+                        Настраиваемая эталонная частота 435-445Hz
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <div>
+                        <strong>Высокая точность</strong><br>
+                        Измерение с точностью ±0.5 цента
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔄</div>
+                    <div>
+                        <strong>Три режима работы</strong><br>
+                        Эталон, Тюнер, Автоматический
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <div>
+                        <strong>Адаптивный дизайн</strong><br>
+                        Оптимизация для всех устройств
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div>
+                        <strong>Высокая производительность</strong><br>
+                        Отклик < 80мс, FFT 8192 семплов
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💾</div>
+                    <div>
+                        <strong>Офлайн поддержка</strong><br>
+                        PWA с сохранением настроек
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Simple Tuner v2.1 - Проект разработки веб-тюнера для гитары</p>
+            <p>Создано с использованием современных веб-технологий</p>
+        </div>
+    </div>
+</body>
+</html>
