@@ -1,0 +1,186 @@
+/* Адаптивные стили для разных устройств */
+
+/* Мобильные устройства (до 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: var(--spacing-md);
+    }
+
+    .tuner-container {
+        padding: var(--spacing-lg);
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .string-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .string-btn {
+        padding: var(--spacing-md);
+        font-size: 1.2rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .duration-control {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stop-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .concert-a-input-group {
+        flex-wrap: wrap;
+    }
+
+    .concert-a-input {
+        min-width: 80px;
+    }
+
+    .status-bar {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+
+    .frequency-meter {
+        height: 100px;
+    }
+
+    .meter-needle {
+        height: 60px;
+    }
+}
+
+/* Планшеты (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .tuner-container {
+        max-width: 500px;
+    }
+
+    .string-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Большие экраны (от 1024px) */
+@media (min-width: 1024px) {
+    .tuner-container {
+        max-width: var(--container-max-width);
+    }
+
+    .string-buttons {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+    }
+
+    .string-btn:hover {
+        transform: translateY(-3px);
+    }
+}
+
+/* Портретная ориентация на мобильных */
+@media (orientation: portrait) and (max-width: 768px) {
+    .string-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .frequency-meter {
+        height: 90px;
+    }
+}
+
+/* Ландшафтная ориентация на мобильных */
+@media (orientation: landscape) and (max-height: 500px) {
+    body {
+        padding: var(--spacing-sm);
+    }
+    
+    .tuner-container {
+        padding: var(--spacing-md);
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .header {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .title {
+        font-size: 1.5rem;
+    }
+    
+    .frequency-meter {
+        height: 80px;
+    }
+    
+    .meter-needle {
+        height: 40px;
+    }
+    
+    .string-buttons {
+        grid-template-columns: repeat(6, 1fr);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .string-btn {
+        padding: var(--spacing-sm);
+        font-size: 1rem;
+    }
+}
+
+/* Высокие экраны */
+@media (min-height: 800px) {
+    .tuner-container {
+        padding: var(--spacing-xl);
+    }
+    
+    .frequency-meter {
+        height: 140px;
+    }
+    
+    .meter-needle {
+        height: 100px;
+    }
+}
+
+/* Уменьшение motion для пользователей с чувствительностью */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .string-btn.playing {
+        animation: none;
+        background: var(--color-active);
+    }
+}
+
+/* Высокая контрастность */
+@media (prefers-contrast: high) {
+    .tuner-container {
+        border: 2px solid var(--color-text);
+    }
+    
+    .string-btn {
+        border-width: 2px;
+    }
+    
+    .mode-btn.active {
+        border: 2px solid white;
+    }
+}
