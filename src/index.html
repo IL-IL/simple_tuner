@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Tuner</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Веб-приложение для настройки гитары с высокой точностью ±0.5¢">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div class="tuner-container">
+        <header class="header">
+            <h1 class="title">Simple Tuner</h1>
+            <div class="concert-a-display">
+                <span class="concert-a-value" id="concertAValue">A = 440.0Hz</span>
+                <span class="accuracy-badge">±0.5¢</span>
+            </div>
+        </header>
+
+        <div class="mode-selector" role="tablist">
+            <button class="mode-btn" id="referenceMode" role="tab" aria-selected="false">Эталон</button>
+            <button class="mode-btn active" id="tunerMode" role="tab" aria-selected="true">Тюнер</button>
+            <button class="mode-btn" id="autoMode" role="tab" aria-selected="false">Авто</button>
+        </div>
+
+        <main class="tuning-display">
+            <div class="frequency-meter" role="img" aria-label="Индикатор настройки">
+                <div class="meter-scale">
+                    <span>-50¢</span>
+                    <span>-25¢</span>
+                    <span>0¢</span>
+                    <span>+25¢</span>
+                    <span>+50¢</span>
+                </div>
+                <div class="meter-needle" id="meterNeedle"></div>
+            </div>
+            <div class="cent-display" id="centDisplay">±0.0¢</div>
+            <div class="frequency-display" id="frequencyDisplay">-- Hz</div>
+        </main>
+
+        <section class="string-buttons" role="group" aria-label="Кнопки струн">
+            <button class="string-btn" data-string="0" aria-label="1-я струна E4">E4</button>
+            <button class="string-btn" data-string="1" aria-label="2-я струна B3">B3</button>
+            <button class="string-btn" data-string="2" aria-label="3-я струна G3">G3</button>
+            <button class="string-btn" data-string="3" aria-label="4-я струна D3">D3</button>
+            <button class="string-btn" data-string="4" aria-label="5-я струна A2">A2</button>
+            <button class="string-btn" data-string="5" aria-label="6-я струна E2">E2</button>
+        </section>
+
+        <div class="controls">
+            <div class="duration-control" role="group" aria-label="Управление длительностью">
+                <button class="duration-btn" id="duration2s" data-duration="2">♪ 2s</button>
+                <button class="duration-btn active" id="durationInf" data-duration="inf">♫ ∞</button>
+            </div>
+            <button class="stop-btn" id="stopBtn" aria-label="Остановить воспроизведение">⏹ Стоп</button>
+        </div>
+
+        <section class="concert-a-controls" aria-label="Настройки Concert A">
+            <h2 class="concert-a-title">Concert A Reference</h2>
+            <input type="range" 
+                   class="concert-a-slider" 
+                   id="concertASlider"
+                   min="435" 
+                   max="445" 
+                   value="440" 
+                   step="0.1"
+                   aria-label="Эталонная частота Concert A">
+            <div class="concert-a-input-group">
+                <input type="number" 
+                       class="concert-a-input" 
+                       id="concertAInput"
+                       value="440.0" 
+                       min="435" 
+                       max="445" 
+                       step="0.1"
+                       aria-label="Значение Concert A в герцах">
+                <span>Hz</span>
+                <button class="reset-btn" id="resetConcertA" aria-label="Сбросить к 440.0Hz">Reset</button>
+            </div>
+        </section>
+
+        <footer class="status-bar" role="contentinfo">
+            <div class="mic-level" aria-label="Уровень микрофона">
+                <span>Mic:</span>
+                <div class="level-bars" id="levelBars">
+                    <div class="level-bar"></div>
+                    <div class="level-bar"></div>
+                    <div class="level-bar"></div>
+                    <div class="level-bar"></div>
+                    <div class="level-bar"></div>
+                    <div class="level-bar"></div>
+                    <div class="level-bar"></div>
+                    <div class="level-bar"></div>
+                </div>
+                <span id="levelValue">-∞dB</span>
+            </div>
+            <div class="status-message" id="statusMessage">Инициализация...</div>
+        </footer>
+    </div>
+
+    <!-- Error modal -->
+    <div class="error-modal" id="errorModal" role="dialog" aria-hidden="true">
+        <div class="error-content">
+            <h3>Ошибка</h3>
+            <p id="errorMessage"></p>
+            <button class="error-close" id="errorClose">OK</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
